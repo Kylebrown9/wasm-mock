@@ -1,0 +1,14 @@
+// cache.wit
+// Type for cache errors.
+enum error {
+    runtime-error,
+    not-found-error,
+}
+// Payload for cache values.
+type payload = list<u8>
+// Set the payload for the given key.
+set: function(key: string, value: payload, ttl: option<u32>) -> expected<_, error>
+// Get the payload stored in the cache for the given key.
+get: function(key: string) -> expected<payload, error>
+// Delete the cache entry for the given key.
+delete: function(key: string) -> expected<_, error>
